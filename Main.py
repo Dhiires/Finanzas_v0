@@ -1,5 +1,8 @@
 import UserInput
+import FilesManagement
 
-description, amount, quota, day, month, year = UserInput.get_purchase_data_from_user()
+new_entry = UserInput.get_purchase_data_from_user()
 
-print(f"Descripción compra: {description}\nMonto: {amount}\nCuotas: {quota}\nDía: {day}\nMes: {month}\nAño: {year}")
+print(f"Descripción compra: {new_entry.description}\nMonto: {new_entry.amount}\nCuotas: {new_entry.quota}\nDía: {new_entry.day}\nMes: {new_entry.month}\nAño: {new_entry.year}")
+
+print(FilesManagement.read_excel(new_entry))
