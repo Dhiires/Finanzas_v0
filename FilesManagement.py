@@ -16,7 +16,8 @@ def create_new_excel(purchase):
 
     data = {
         "Monto": [purchase.amount],
-        "Cuotas": [purchase.quota],
+        "Cuota": [purchase.quota],
+        "Cuotas": [purchase.payments],
         "Fecha": [f"{purchase.day}-{purchase.month}-{purchase.year}"],
         "Description": [purchase.description]
     }
@@ -41,18 +42,21 @@ def insert_purchase_into_excel(purchase):
         df = pd.read_excel(file_path)
         
         df['Monto'] = pd.to_numeric(df['Monto'], errors='coerce')
+        df['Cuota'] = pd.to_numeric(df['Cuota'], errors='coerce')
         df['Cuotas'] = pd.to_numeric(df['Cuotas'], errors='coerce')
         
         new_data = {
             "Monto": purchase.amount,
-            "Cuotas": purchase.quota,
+            "Cuota": purchase.quota,
+            "Cuotas": purchase.payments,
             "Fecha": fecha_str,
             "Description": purchase.description
         }
         
         df = pd.concat([df, pd.DataFrame([new_data])], ignore_index=True)
         
-        df['Monto'] = df['Monto'].astype(float)
+        df['Monto'] = df['Monto'].astype(int)
+        df['Cuota'] = df['Cuota'].astype(int)
         df['Cuotas'] = df['Cuotas'].astype(int)
         
         df.to_excel(file_path, index=False)

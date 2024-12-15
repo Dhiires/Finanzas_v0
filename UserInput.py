@@ -5,6 +5,7 @@ def get_purchase_data_from_user():
     new_entry = EntryClass.Purchase(input("Descripción: "), 
                                     input("Monto: "), 
                                     input("Cuotas: "),
+                                    GlobalVariables.CUOTA_DEFAULT,
                                     input("Día?: "),
                                     input("Mes?: "),
                                     input("Año?: "))
