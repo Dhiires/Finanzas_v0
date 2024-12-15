@@ -1,21 +1,19 @@
-from datetime import datetime
 import GlobalVariables
 import EntryClass
 
 def get_purchase_data_from_user():
-    new_entry = EntryClass.Purchase(input("Descripción: "), input("Monto: "), input("Cuotas: "))
-    day = datetime.today().strftime("%d")
-    month = datetime.today().strftime("%m")
-    year = datetime.today().strftime("%Y")
+    new_entry = EntryClass.Purchase(input("Descripción: "), 
+                                    input("Monto: "), 
+                                    input("Cuotas: "),
+                                    input("Día?: "),
+                                    input("Mes?: "),
+                                    input("Año?: "))
     
-    if int(day) >= GlobalVariables.DIA_FACTURACION:
-        month = str(int(month)+1)
+    if int(new_entry.day) >= GlobalVariables.DIA_FACTURACION:
+        new_entry.month = str(int(new_entry.month)+1)
     
-    if int(month) % 12 == 1:
-        month = str(f"{int(month)-12}".zfill(2))
-        year = str(int(year)+1)
+    if int(new_entry.month) % 12 == 1:
+        new_entry.month = str(f"{int(new_entry.month)-12}".zfill(2))
+        new_entry.year = str(int(new_entry.year)+1)
     
-    return new_entry.description, new_entry.amount, new_entry.quota, day, month, year
-
-def insert_purchase():
-    return
+    return new_entry
