@@ -2,7 +2,7 @@ from datetime import datetime
 
 class Purchase:
     
-    def __init__(self, description, amount, quota, payments, day, month, year) -> None:
+    def __init__(self, description, amount, payments, quota, day, month, year) -> None:
         self.description = description
         self.amount = amount if amount != "" else 0
         self.quota = quota
