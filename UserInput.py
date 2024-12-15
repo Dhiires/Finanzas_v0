@@ -16,3 +16,6 @@ def get_purchase_data_from_user():
         year = str(int(year)+1)
     
     return new_entry.description, new_entry.amount, new_entry.quota, day, month, year
+
+def insert_purchase():
+    return
