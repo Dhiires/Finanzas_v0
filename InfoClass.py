@@ -12,7 +12,7 @@ class Bill:
             bill = cls(
                 description = row.get("Descripcion",""),
                 amount = row.get("Monto",""),
-                individual = row.get("Individual",True)
+                individual = row.get("Individual","Si")
                 )
             bill_list.append(bill)
         return bill_list
